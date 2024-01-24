@@ -1,6 +1,19 @@
 import './style.css'
 
-
+const daysinmonths = [
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    30,
+    30,
+    31,
+] 
 
 const arrow = document.getElementById('arrow')
 
@@ -19,36 +32,34 @@ function calculate(){
     const month = document.getElementById('month')
     const year = document.getElementById('year')
     let  d = day.value;
-    let  m = month.value;
+    let  m = month.value.replace(/^0+/, '');
     let  y = year.value;
-    let calculatedDay = fullDay-d
-    let calculatedMonth =fullMonth-m
-    let calculatedYear = fullYear-y 
-    console.log(calculatedMonth)
+    let calculatedDay = daysinmonths[m]-d
+    let calculatedMonth =fullMonth-m+13
+    let calculatedYear = fullYear-y-1
+    console.log(m)
+    console.log(daysinmonths[1])
+    if (calculatedMonth>=12){
+        calculatedMonth = 0
+        calculatedYear++
+    }
+    if(calculatedDay<0) {
+        calculatedMonth--
+        calculatedDay+= Number(daysinmonths[m])
 
+    }
     if(calculatedMonth<0){
         calculatedYear--
-        calculatedMonth +=13
+        calculatedMonth+=12
+    }
+  
         days.innerHTML =`${calculatedDay}`
         years.innerHTML =`${calculatedYear}`
         months.innerHTML =`${calculatedMonth}`
-    }
-    else if(calculatedMonth>=-1) {
-        calculatedYear++
-        calculatedMonth = 0
-        days.innerHTML =`${calculatedDay}`
-        years.innerHTML =`${calculatedYear}`
-        months.innerHTML =`${calculatedMonth}`
-    }
 
 }
 
-
-function calculateage(d: number,m: number,y: number){
-   
-    console.log(d)
-    days.innerHTML=`caca`
-}
+// +31 - (birtmonthday - birthmonthdays)
 
 arrow?.addEventListener("click",()=>{calculate()})
 

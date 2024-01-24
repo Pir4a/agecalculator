@@ -1,24 +1,56 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+
+const arrow = document.getElementById('arrow')
+
+
+const date = new Date()
+const fullYear = date.getFullYear()
+const fullMonth = date.getMonth()
+const fullDay = date.getDate()
+console.log(fullDay, fullMonth, fullYear)
+
+function calculate(){
+    const days = document.getElementById('days')
+    const years = document.getElementById('years')
+    const months = document.getElementById('months')
+    const day = document.getElementById('day')
+    const month = document.getElementById('month')
+    const year = document.getElementById('year')
+    let  d = day.value;
+    let  m = month.value;
+    let  y = year.value;
+    let calculatedDay = fullDay-d
+    let calculatedMonth =fullMonth-m
+    let calculatedYear = fullYear-y 
+    console.log(calculatedMonth)
+
+    if(calculatedMonth<0){
+        calculatedYear--
+        calculatedMonth +=13
+        days.innerHTML =`${calculatedDay}`
+        years.innerHTML =`${calculatedYear}`
+        months.innerHTML =`${calculatedMonth}`
+    }
+    else if(calculatedMonth>=-1) {
+        calculatedYear++
+        calculatedMonth = 0
+        days.innerHTML =`${calculatedDay}`
+        years.innerHTML =`${calculatedYear}`
+        months.innerHTML =`${calculatedMonth}`
+    }
+
+}
+
+
+function calculateage(d: number,m: number,y: number){
+   
+    console.log(d)
+    days.innerHTML=`caca`
+}
+
+arrow?.addEventListener("click",()=>{calculate()})
+
+
+

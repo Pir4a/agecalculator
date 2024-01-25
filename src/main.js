@@ -70,7 +70,11 @@ function calculate(){
         pdateyear.innerText = "Must be in the past"
         return
     }
-
+    if(y<1900){
+        dateyear.classList.add('red')
+        pdateyear.innerText = "Bro you're really old.."
+        return
+    }
 
     dateday.classList.remove('red')
     pdateday.innerText = ""

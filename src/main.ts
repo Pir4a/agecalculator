@@ -34,18 +34,62 @@ function calculate(){
     let  d = day.value;
     let  m = month.value.replace(/^0+/, '');
     let  y = year.value;
-    let calculatedDay = daysinmonths[m]-d
+    let calculatedDay = fullDay-d
     let calculatedMonth =fullMonth-m+13
     let calculatedYear = fullYear-y-1
     console.log(m)
     console.log(daysinmonths[1])
+    let dateday = document.getElementById('dateday')
+    let datemonth = document.getElementById('datemonth')
+    let dateyear = document.getElementById('dateyear')
+    let pdateday = document.getElementById("pdateday")
+    let pdatemonth = document.getElementById("pdatemonth")
+    let pdateyear = document.getElementById("pdateyear")
+
+
+    if(d=="" || m=="" || y =="") {
+        console.log(4)
+        dateday.classList.add('red')
+        datemonth.classList.add('red')
+        dateyear.classList.add('red')
+        pdatemonth.innerText = "This field is required"
+        pdateyear.innerText = "This field is required"
+        pdateday.innerText = "This field is required"
+        return
+    }
+
+    if(d>daysinmonths[m] || d<1) {
+        dateday.classList.add('red')
+        pdateday.innerText = "Must be a valid day"
+        return
+    }
+    if(month.value>12){
+        datemonth.classList.add('red')
+        pdatemonth.innerText = "Must be a valid month"
+        return
+    }
+ 
+    if(y>fullYear){
+        dateyear.classList.add('red')
+        pdateyear.innerText = "Must be in the past"
+        return
+    }
+
+
+    dateday.classList.remove('red')
+    pdateday.innerText = ""
+    datemonth.classList.remove('red')
+    dateyear.classList.remove('red')
+    pdatemonth.innerText = ""
+    pdateyear.innerText = ""
+
     if (calculatedMonth>=12){
         calculatedMonth = 0
         calculatedYear++
     }
     if(calculatedDay<0) {
         calculatedMonth--
-        calculatedDay+= Number(daysinmonths[m])
+        calculatedDay+= daysinmonths[fullMonth]
 
     }
     if(calculatedMonth<0){

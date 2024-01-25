@@ -28,7 +28,17 @@
   font-family: Poppins-regular;
   src: url(/assets/fonts/Poppins-Regular.ttf);
 }
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+p {
+  font-family: Poppins-bolditalic;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  font-size: 7px;
+}
 .appcontainer{
   background-color: #F0F0F0;
   height: 100dvh;
@@ -47,7 +57,8 @@
 .dates {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   border-bottom: 1px solid #ECECEC;
 }
 
@@ -56,6 +67,13 @@
   letter-spacing: 2px;
   font-family: Poppins-bold;
   color:#606060;
+}
+
+.red {
+  color: #F66160;
+}
+.red input {
+  outline: 1px solid #F66160;
 }
 
 ul {
@@ -124,4 +142,71 @@ ul li {
 
 h1 {
   margin-bottom: -35px;
+}
+@media (max-width: 767px) {
+
+  .grid{
+    padding-top: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    
+  }
+  .dates { 
+    padding: 10px;
+    height: 180px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ECECEC;
+  }
+  
+  .grid input {
+    cursor: pointer;
+    font-family: Poppins-extrabold;
+    padding: 15px;
+    font-size: 20px;
+    margin-top: 5px;
+    width: 80px;
+    height: 50px;
+  }
+  .arrow img {
+    position: absolute;
+    right: 110px;
+    top:115px;
+    height: 60px;
+    width: 60px;
+    background-color: #864DFD;
+    border-radius: 50%;
+  }
+  
+  .app {
+    padding: 8px;
+    width: 320px;
+    height: 470px;
+  }
+
+  .calculateddates{
+  
+    font-size: 27px;
+  }
+  .calculateddates span {
+    color: #884CFD;
+    padding: 5px;
+  }
+  ul li {
+    padding: 3px;
+  }
+  h1{
+    margin-bottom: -25px;
+  }
+  .appcontainer{
+    width: 100dvw;
+    background-color: #F0F0F0;
+    height: 100dvh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

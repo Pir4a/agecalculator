@@ -22,7 +22,7 @@ const date = new Date()
 const fullYear = date.getFullYear()
 const fullMonth = date.getMonth()
 const fullDay = date.getDate()
-
+console.log(fullMonth)
 function calculate(){
     const days = document.getElementById('days')
     const years = document.getElementById('years')
@@ -65,10 +65,25 @@ function calculate(){
         return
     }
  
-    if(y>=fullYear){
+    if(y>fullYear){
         dateyear.classList.add('red')
         pdateyear.innerText = "Must be in the past"
         return
+    }
+    if(y==fullYear){
+        console.log(m)
+        console.log(fullMonth)
+        if(m-1>fullMonth){
+            dateyear.classList.add('red')
+        pdateyear.innerText = "Must be in the past"
+        return
+        }else if(d>fullDay){
+            dateyear.classList.add('red')
+            pdateyear.innerText = "Must be in the past"
+            return
+        }else
+        calculatedYear++
+        calculatedMonth = Math.abs(calculatedMonth-12)
     }
     if(y<1900){
         dateyear.classList.add('red')

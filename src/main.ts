@@ -22,7 +22,6 @@ const date = new Date()
 const fullYear = date.getFullYear()
 const fullMonth = date.getMonth()
 const fullDay = date.getDate()
-console.log(fullDay, fullMonth, fullYear)
 
 function calculate(){
     const days = document.getElementById('days')
@@ -37,8 +36,6 @@ function calculate(){
     let calculatedDay = fullDay-d
     let calculatedMonth =fullMonth-m+13
     let calculatedYear = fullYear-y-1
-    console.log(m)
-    console.log(daysinmonths[1])
     let dateday = document.getElementById('dateday')
     let datemonth = document.getElementById('datemonth')
     let dateyear = document.getElementById('dateyear')
@@ -48,17 +45,16 @@ function calculate(){
 
 
     if(d=="" || m=="" || y =="") {
-        console.log(4)
+        if(d==""){
         dateday.classList.add('red')
-        datemonth.classList.add('red')
-        dateyear.classList.add('red')
-        pdatemonth.innerText = "This field is required"
-        pdateyear.innerText = "This field is required"
-        pdateday.innerText = "This field is required"
+        pdateday.innerText = "This field is required"}
+        if(m==""){datemonth.classList.add('red')
+        pdatemonth.innerText = "This field is required"}
+        if(y==""){dateyear.classList.add('red')
+        pdateyear.innerText = "This field is required"}
         return
     }
-
-    if(d>daysinmonths[m] || d<1) {
+    if(d>daysinmonths[m-1] || d<1) {
         dateday.classList.add('red')
         pdateday.innerText = "Must be a valid day"
         return
@@ -102,8 +98,6 @@ function calculate(){
         months.innerHTML =`${calculatedMonth}`
 
 }
-
-// +31 - (birtmonthday - birthmonthdays)
 
 arrow?.addEventListener("click",()=>{calculate()})
 

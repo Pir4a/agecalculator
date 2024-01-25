@@ -65,7 +65,7 @@ function calculate(){
         return
     }
  
-    if(y>fullYear){
+    if(y>=fullYear){
         dateyear.classList.add('red')
         pdateyear.innerText = "Must be in the past"
         return
